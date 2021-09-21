@@ -1,0 +1,19 @@
+<mat-progress-spinner
+  fxLayout="row"
+  fxLayoutAlign="center center"
+  mode="indeterminate"
+  *ngIf="products.length <= 0"
+></mat-progress-spinner>
+<div
+  class="product-list"
+  fxLayout="row wrap"
+  fxLayoutGap="16px"
+  fxFlex="100"
+  *ngIf="products.length > 0"
+>
+  <app-product
+    *ngFor="let product of products"
+    [product]="product"
+    fxFlex="0 0 calc(20% - 16px)"
+  ></app-product>
+</div>

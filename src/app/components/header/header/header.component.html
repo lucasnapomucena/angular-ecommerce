@@ -1,0 +1,55 @@
+<header class="header" fxLayoutAlign="center start" fxLayout="column">
+  <div
+    fxLayout="row"
+    fxLayoutAlign="start center"
+    fxLayoutGap="32px"
+    class="container"
+  >
+    <div class="header__logo" fxFlex="15" fxLayoutAlign="start center">
+      <a routerLink="/" title="Timestamp" aria-label="initial page"
+        >Angular ecommerce</a
+      >
+    </div>
+    <div class="header__search" fxFlex="100">
+      <form fxLayoutGap="16px" fxLayoutAlign="center center">
+        <input
+          type="text"
+          name="search"
+          fxFlex="100"
+          matInput
+          placeholder="Search products..."
+        />
+        <button
+          class="primary-light"
+          type="submit"
+          fxLayoutAlign="center center"
+        >
+          <mat-icon>search</mat-icon>
+        </button>
+      </form>
+    </div>
+    <div
+      class="header__cart"
+      fxLayoutAlign="end center"
+      fxFlex="15"
+      fxLayoutGap="8px"
+    >
+      <a routerLink="/wishlist" aria-label="icon-button with a heart icon">
+        <mat-icon class="primary-light" matBadge="{{ wishlist.length }}"
+          >favorite_border</mat-icon
+        >
+      </a>
+      <button aria-label="icon-button with a account">
+        <mat-icon class="primary-light">person_outline</mat-icon>
+      </button>
+      <button
+        aria-label="icon-button with a shopping cart"
+        (click)="goToCart()"
+      >
+        <mat-icon class="primary-light" matBadge="{{ products.length }}"
+          >storefront</mat-icon
+        >
+      </button>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,35 @@
+.header {
+  background-color: var(--secondary-medium);
+  position: sticky;
+  top: 0;
+  padding: 1rem;
+  min-height: 87px;
+  margin-bottom: 1.5rem;
+  z-index: 10;
+
+  &__logo {
+    a {
+      font-size: 21px;
+      font-weight: 700;
+    }
+  }
+
+  &__search {
+    form {
+      position: relative;
+
+      input {
+        border: 1px solid var(--secondary-dark);
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        height: 42px;
+        outline: none;
+      }
+
+      button {
+        position: absolute;
+        right: 24px;
+      }
+    }
+  }
+}

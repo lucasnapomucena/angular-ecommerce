@@ -1,0 +1,51 @@
+<main class="container cart">
+  <h1>Shopping Cart</h1>
+
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8"
+    *ngIf="dataSource.length > 0"
+  >
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>Id.</th>
+      <td mat-cell *matCellDef="let product">{{ product.id }}</td>
+    </ng-container>
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef>Image</th>
+      <td mat-cell *matCellDef="let product">
+        <img
+          [src]="product.image"
+          alt="{{ product.title }}"
+          width="75"
+          height="75"
+        />
+      </td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let product">{{ product.title }}</td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef>Price</th>
+      <td mat-cell *matCellDef="let product">{{ product.price }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <div class="cart__empty" *ngIf="dataSource.length <= 0">
+    <p>Não existem produtos na sua sacola</p>
+  </div>
+
+  <div class="cart__empty" *ngIf="dataSource.length >= 1">
+    <button>Go to Payment</button>
+  </div>
+</main>

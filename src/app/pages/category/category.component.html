@@ -1,0 +1,10 @@
+<main class="container category" fxLayout="column">
+  <h1>Category Products: {{ name }}</h1>
+  <section fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+    <app-product-list
+      [products]="items"
+      fxFlex="100"
+      fxLayoutAlign="center center"
+    ></app-product-list>
+  </section>
+</main>

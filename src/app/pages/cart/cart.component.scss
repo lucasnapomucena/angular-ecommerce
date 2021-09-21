@@ -1,0 +1,22 @@
+.cart {
+  h1 {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    margin-bottom: 36px;
+  }
+  &__empty {
+    p {
+      font-size: 1.5rem;
+    }
+  }
+  table {
+    tr.mat-row + tr.mat-row {
+      margin-top: 1rem;
+    }
+    td.mat-cell,
+    th.mat-header-cell {
+      padding: 1rem;
+    }
+  }
+}
