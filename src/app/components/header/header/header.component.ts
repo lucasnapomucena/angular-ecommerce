@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 
 
@@ -13,8 +14,10 @@ export class HeaderComponent implements OnInit {
   products: [];
   wishlist: [];
   total: number = 0;
+  form: FormGroup;
+  submitted: boolean = false;
 
-  constructor(private store: Store<any>, private router: Router) {
+  constructor(private store: Store<any>, private router: Router, private formBuilder: FormBuilder) {
     store.pipe(select('shop')).subscribe((state) => {
       let total = state.cart.reduce(this.getTotal, 0);
       this.products = state.cart;
@@ -23,6 +26,10 @@ export class HeaderComponent implements OnInit {
     })
   }
   ngOnInit() {
+
+    this.form = this.formBuilder.group({
+      search: ['', Validators.required],
+      })
   }
 
   getTotal(total, item) {
@@ -31,5 +38,11 @@ export class HeaderComponent implements OnInit {
 
   goToCart() {
     this.router.navigate(['/cart']);
+  }
+
+  onSubmitSearch() {
+
+    this.router.navigate(['/search',  this.form.value.search])
+    this.form.reset()
   }
 }

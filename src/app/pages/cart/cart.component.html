@@ -45,7 +45,13 @@
     <p>Não existem produtos na sua sacola</p>
   </div>
 
-  <div class="cart__empty" *ngIf="dataSource.length >= 1">
-    <button>Go to Payment</button>
+  <div
+    class="cart__bottom"
+    *ngIf="dataSource.length >= 1"
+    fxLayoutAlign="end center"
+    fxLayoutGap="16px"
+  >
+    <button mat-stroked-button color="primary">Keep buying</button>
+    <button mat-raised-button color="primary">Go to Payment</button>
   </div>
 </main>

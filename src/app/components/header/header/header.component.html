@@ -11,18 +11,23 @@
       >
     </div>
     <div class="header__search" fxFlex="100">
-      <form fxLayoutGap="16px" fxLayoutAlign="center center">
+      <form fxLayoutGap="16px" fxLayoutAlign="center center" [formGroup]="form">
         <input
           type="text"
-          name="search"
+          name="name"
           fxFlex="100"
           matInput
           placeholder="Search products..."
+          formControlName="search"
+          required
+          minlength="3"
         />
         <button
           class="primary-light"
           type="submit"
           fxLayoutAlign="center center"
+          [disabled]="!form.valid"
+          (click)="onSubmitSearch()"
         >
           <mat-icon>search</mat-icon>
         </button>

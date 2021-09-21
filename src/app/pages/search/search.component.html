@@ -1,0 +1,11 @@
+<main class="container category" fxLayout="column">
+  <h1>Products found: {{ param }}</h1>
+  <section fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+    <app-product-list
+      [products]="items"
+      fxFlex="100"
+      fxLayoutAlign="center center"
+      *ngIf="items.length > 0"
+    ></app-product-list>
+  </section>
+</main>

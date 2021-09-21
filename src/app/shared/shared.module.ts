@@ -18,7 +18,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatBadgeModule
   ]
 })
-export class ShareModule {}
+export class SharedModule {}
 
 
 /**  Copyright 2021 Google LLC. All Rights Reserved.

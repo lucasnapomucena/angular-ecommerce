@@ -10,7 +10,13 @@
       font-size: 1.5rem;
     }
   }
-  table {
+
+  &__bottom {
+    margin-top: 2rem;
+  }
+  table.mat-table {
+    box-shadow: none;
+
     tr.mat-row + tr.mat-row {
       margin-top: 1rem;
     }
