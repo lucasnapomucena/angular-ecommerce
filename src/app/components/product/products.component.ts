@@ -1,13 +1,18 @@
-import { Input } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+
 import { Product } from '../../core/models/product.model';
-import { AddToCart, RemoveFromCart, AddToWishlist, RemoveFromWishlist } from '../../store/actions';
+import {
+  AddToCart,
+  AddToWishlist,
+  RemoveFromCart,
+  RemoveFromWishlist
+} from '../../store/actions';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss'],
+  styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
   constructor(private store: Store<{ items: []; cart: [] }>) {}
@@ -24,12 +29,12 @@ export class ProductComponent implements OnInit {
     this.inCart = false;
   }
 
-  addToWishlist(item:Product) {
+  addToWishlist(item: Product) {
     this.store.dispatch(new AddToWishlist(item));
     this.toggle = !this.toggle;
   }
 
-  removeToWishlist(item:Product) {
+  removeToWishlist(item: Product) {
     this.store.dispatch(new RemoveFromWishlist(item));
     this.toggle = false;
   }
@@ -37,6 +42,6 @@ export class ProductComponent implements OnInit {
   @Input() product: Product;
 
   ngOnInit(): void {
-    this.inCart= false;
+    this.inCart = false;
   }
 }

@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+
 import { Product } from '../core/models/product.model';
 
 export enum ActionTypes {
@@ -13,12 +14,12 @@ export enum ActionTypes {
 
 export class AddToCart implements Action {
   readonly type = ActionTypes.Add;
-  constructor(public payload:Product) {}
+  constructor(public payload: Product) {}
 }
 
 export class RemoveFromCart implements Action {
   readonly type = ActionTypes.Remove;
-  constructor(public payload:Product) {}
+  constructor(public payload: Product) {}
 }
 
 export class AddToWishlist implements Action {
@@ -31,7 +32,7 @@ export class RemoveFromWishlist implements Action {
   constructor(public payload: Product) {}
 }
 export class GetItemsWishlist implements Action {
-  readonly type = ActionTypes.LoadItemsWishlist
+  readonly type = ActionTypes.LoadItemsWishlist;
 }
 
 export class GetItems implements Action {
@@ -43,4 +44,10 @@ export class LoadItems implements Action {
   constructor(public payload: Product[]) {}
 }
 
-export type Actions = AddToCart | RemoveFromCart | AddToWishlist | RemoveFromWishlist |  GetItems | LoadItems;
+export type Actions =
+  | AddToCart
+  | RemoveFromCart
+  | AddToWishlist
+  | RemoveFromWishlist
+  | GetItems
+  | LoadItems;

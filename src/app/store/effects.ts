@@ -1,9 +1,10 @@
-import { mergeMap, map, catchError } from 'rxjs/operators';
-import {ActionTypes} from './actions';
-import { ProductService } from '../services/product.service';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
+import { catchError, map, mergeMap } from 'rxjs/operators';
+
+import { ProductService } from '../services/product.service';
+import { ActionTypes } from './actions';
 
 @Injectable()
 export class ShopEffects {
@@ -19,7 +20,7 @@ export class ShopEffects {
         this.productService.getProducts().pipe(
           map((products) => ({
             type: ActionTypes.LoadSuccess,
-            payload: products,
+            payload: products
           })),
           catchError(() => EMPTY)
         )

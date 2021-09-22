@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+
 import { Product } from '../../core/models/product.model';
 import { GetItemsWishlist } from '../../store/actions';
 
@@ -9,15 +10,15 @@ import { GetItemsWishlist } from '../../store/actions';
   styleUrls: ['./wishlist.component.scss']
 })
 export class WishlistComponent implements OnInit {
-
-  wishlist: Product[] = []
+  wishlist: Product[] = [];
 
   constructor(private store: Store<any>) {
-    store.pipe(select('shop')).subscribe((state) => (this.wishlist = state.wishlist));
+    store
+      .pipe(select('shop'))
+      .subscribe((state) => (this.wishlist = state.wishlist));
   }
 
   ngOnInit(): void {
     this.store.dispatch(new GetItemsWishlist());
   }
-
 }

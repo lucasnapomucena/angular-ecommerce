@@ -8,14 +8,15 @@ import { ActivatedRoute } from '@angular/router';
 export class CategoryService implements OnInit {
   public name: string;
 
-  constructor(private httpClient: HttpClient, private route: ActivatedRoute) { }
+  constructor(private httpClient: HttpClient, private route: ActivatedRoute) {}
 
   getCategory(params: string) {
-    return this.httpClient.get('https://fakestoreapi.com/products/category/'+ params)
+    return this.httpClient.get(
+      'https://fakestoreapi.com/products/category/' + params
+    );
   }
 
   ngOnInit() {
     this.name = this.route.snapshot.paramMap.get('name');
   }
-
 }

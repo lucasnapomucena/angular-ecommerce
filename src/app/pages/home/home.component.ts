@@ -8,9 +8,8 @@ import { Product } from '../../core/models/product.model';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-
 export class HomeComponent implements OnInit {
-  items: Product[] = []
+  items: Product[] = [];
 
   constructor(private store: Store<any>) {
     store.pipe(select('shop')).subscribe((state) => (this.items = state.items));
@@ -19,5 +18,4 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(new GetItems());
   }
-
 }
