@@ -15,12 +15,7 @@
     <ng-container matColumnDef="image">
       <th mat-header-cell *matHeaderCellDef>Image</th>
       <td mat-cell *matCellDef="let product">
-        <img
-          [src]="product.image"
-          alt="{{ product.title }}"
-          width="75"
-          height="75"
-        />
+        <img [src]="product.image" alt="{{ product.title }}" width="75" />
       </td>
     </ng-container>
 
@@ -58,9 +53,11 @@
     *ngIf="dataSource.length >= 1"
     fxLayout="column wrap"
     fxLayoutAlign="end end"
-    fxLayoutGap="16px"
+    fxLayoutGap="32px"
   >
-    <div class="cart__bottom-price">Total: {{ total | currency: 'EUR' }}</div>
+    <div class="cart__bottom-price">
+      <strong>Total:</strong> {{ total | currency: 'EUR' }}
+    </div>
     <div>
       <button mat-stroked-button color="primary" (click)="goToHome()">
         Keep buying

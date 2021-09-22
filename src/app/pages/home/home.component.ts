@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { GetItems } from '../../store/actions';
+
 import { Product } from '../../core/models/product.model';
+import { GetItems } from '../../store/actions';
 
 @Component({
   selector: 'app-home',
