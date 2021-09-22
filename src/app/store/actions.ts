@@ -5,6 +5,7 @@ export enum ActionTypes {
   Add = '[Product] Add to cart',
   Remove = '[Product] Remove from cart',
   AddWishlist = '[Product] Add to wishlist',
+  RemoveWishlist = '[Product] Remove from wishlist',
   LoadItemsWishlist = '[Product] Load items wishlist',
   LoadItems = '[Product] Load items from server',
   LoadSuccess = '[Product] Load success'
@@ -24,6 +25,11 @@ export class AddToWishlist implements Action {
   readonly type = ActionTypes.AddWishlist;
   constructor(public payload: Product) {}
 }
+
+export class RemoveFromWishlist implements Action {
+  readonly type = ActionTypes.RemoveWishlist;
+  constructor(public payload: Product) {}
+}
 export class GetItemsWishlist implements Action {
   readonly type = ActionTypes.LoadItemsWishlist
 }
@@ -37,4 +43,4 @@ export class LoadItems implements Action {
   constructor(public payload: Product[]) {}
 }
 
-export type Actions = AddToCart | RemoveFromCart | AddToWishlist | GetItems | LoadItems;
+export type Actions = AddToCart | RemoveFromCart | AddToWishlist | RemoveFromWishlist |  GetItems | LoadItems;

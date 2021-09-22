@@ -16,8 +16,6 @@ export class CategoryService implements OnInit {
 
   ngOnInit() {
     this.name = this.route.snapshot.paramMap.get('name');
-
-    console.log(this.name);
   }
 
 }

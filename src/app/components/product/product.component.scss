@@ -54,6 +54,9 @@
   .product__category {
     text-decoration: none;
     color: var(--primary-dark);
+    &:first-letter {
+      text-transform: uppercase;
+    }
   }
 
   .product__price {

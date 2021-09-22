@@ -13,6 +13,14 @@
 
   &__bottom {
     margin-top: 2rem;
+
+    &-price {
+      font-size: 1.5rem;
+    }
+
+    button + button {
+      margin-left: 1.5rem;
+    }
   }
   table.mat-table {
     box-shadow: none;

@@ -16,6 +16,7 @@
   <button
     class="product__wishlist"
     [ngClass]="{ active: toggle }"
+    (click)="removeToWishlist(product)"
     *ngIf="toggle"
   >
     <mat-icon class="primary-medium">favorite</mat-icon>

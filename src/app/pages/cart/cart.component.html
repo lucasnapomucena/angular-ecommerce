@@ -31,7 +31,18 @@
 
     <ng-container matColumnDef="price">
       <th mat-header-cell *matHeaderCellDef>Price</th>
-      <td mat-cell *matCellDef="let product">{{ product.price }}</td>
+      <td mat-cell *matCellDef="let product">
+        {{ product.price | currency: 'EUR' }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let product">
+        <button (click)="removeFromCart(product)">
+          <mat-icon class="primary-light">delete</mat-icon>
+        </button>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -45,10 +56,16 @@
   <div
     class="cart__bottom"
     *ngIf="dataSource.length >= 1"
-    fxLayoutAlign="end center"
+    fxLayout="column wrap"
+    fxLayoutAlign="end end"
     fxLayoutGap="16px"
   >
-    <button mat-stroked-button color="primary">Keep buying</button>
-    <button mat-raised-button color="primary">Go to Payment</button>
+    <div class="cart__bottom-price">Total: {{ total | currency: 'EUR' }}</div>
+    <div>
+      <button mat-stroked-button color="primary" (click)="goToHome()">
+        Keep buying
+      </button>
+      <button mat-raised-button color="primary">Go to Payment</button>
+    </div>
   </div>
 </main>

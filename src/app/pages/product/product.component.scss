@@ -1,0 +1,27 @@
+.product {
+  &__image {
+    figure {
+      max-width: 500px;
+    }
+  }
+  &__info {
+    h1 {
+      font-size: 2rem;
+      line-height: 2.5rem;
+      font-weight: 500;
+      color: var(--primary-dark);
+    }
+
+    &-price {
+      font-size: 1.5rem;
+    }
+
+    &-description {
+      font-size: 0.875rem;
+      line-height: 1.5rem;
+      &:first-letter {
+        text-transform: uppercase;
+      }
+    }
+  }
+}

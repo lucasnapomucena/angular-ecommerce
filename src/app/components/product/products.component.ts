@@ -2,7 +2,7 @@ import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Product } from '../../core/models/product.model';
-import { AddToCart, RemoveFromCart, AddToWishlist } from '../../store/actions';
+import { AddToCart, RemoveFromCart, AddToWishlist, RemoveFromWishlist } from '../../store/actions';
 
 @Component({
   selector: 'app-product',
@@ -27,6 +27,11 @@ export class ProductComponent implements OnInit {
   addToWishlist(item:Product) {
     this.store.dispatch(new AddToWishlist(item));
     this.toggle = !this.toggle;
+  }
+
+  removeToWishlist(item:Product) {
+    this.store.dispatch(new RemoveFromWishlist(item));
+    this.toggle = false;
   }
 
   @Input() product: Product;
