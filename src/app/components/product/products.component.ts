@@ -18,6 +18,8 @@ export class ProductComponent implements OnInit {
   constructor(private store: Store<{ items: []; cart: [] }>) {}
 
   inCart: boolean = false;
+  @Input() product: Product;
+  @Input() wishlist: boolean = false;
 
   addToCart(item: Product) {
     this.store.dispatch(new AddToCart(item));
@@ -38,9 +40,6 @@ export class ProductComponent implements OnInit {
     this.store.dispatch(new RemoveFromWishlist(item));
     this.wishlist = false;
   }
-
-  @Input() product: Product;
-  @Input() wishlist: boolean = false;
 
   ngOnInit(): void {
     this.inCart = false;

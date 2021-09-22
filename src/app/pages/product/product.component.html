@@ -22,9 +22,10 @@
     fxLayout="column"
     fxLayoutAlign="start start"
     *ngIf="(product | json) != ({} | json)"
-    fxLayoutGap="24px"
+    fxLayoutGap="16px"
   >
     <h1 class="product__info-title">{{ product.title }}</h1>
+    <app-rating [rating]="product.rating.rate"></app-rating>
     <p class="product__info-price">{{ product.price | currency: 'EUR' }}</p>
     <button
       mat-raised-button
