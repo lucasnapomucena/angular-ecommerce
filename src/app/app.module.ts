@@ -23,6 +23,7 @@ import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { SharedModule } from './shared/shared.module';
 import { ShopEffects } from './store/effects';
 import { ShopReducer } from './store/reducer';
+import { RatingComponent } from './components/rating/rating.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -47,7 +48,8 @@ const routes: Routes = [
     PageProductComponent,
     WishlistComponent,
     SearchComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,
