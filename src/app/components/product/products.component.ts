@@ -16,7 +16,7 @@ import {
 })
 export class ProductComponent implements OnInit {
   constructor(private store: Store<{ items: []; cart: [] }>) {}
-  toggle: boolean = false;
+
   inCart: boolean = false;
 
   addToCart(item: Product) {
@@ -31,15 +31,16 @@ export class ProductComponent implements OnInit {
 
   addToWishlist(item: Product) {
     this.store.dispatch(new AddToWishlist(item));
-    this.toggle = !this.toggle;
+    this.wishlist = !this.wishlist;
   }
 
   removeToWishlist(item: Product) {
     this.store.dispatch(new RemoveFromWishlist(item));
-    this.toggle = false;
+    this.wishlist = false;
   }
 
   @Input() product: Product;
+  @Input() wishlist: boolean = false;
 
   ngOnInit(): void {
     this.inCart = false;

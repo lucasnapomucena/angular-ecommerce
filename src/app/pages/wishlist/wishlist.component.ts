@@ -11,6 +11,7 @@ import { GetItemsWishlist } from '../../store/actions';
 })
 export class WishlistComponent implements OnInit {
   wishlist: Product[] = [];
+  wishlistStatus: boolean;
 
   constructor(private store: Store<any>) {
     store
@@ -19,6 +20,7 @@ export class WishlistComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.wishlistStatus = true;
     this.store.dispatch(new GetItemsWishlist());
   }
 }

@@ -9,6 +9,7 @@ import { Product } from '../../core/models/product.model';
 })
 export class ProductListComponent implements OnInit {
   @Input() products: Product[] = [];
+  @Input() wishlist: boolean;
   constructor() {}
 
   ngOnInit(): void {}

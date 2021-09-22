@@ -7,17 +7,17 @@
   <button
     class="product__wishlist"
     (click)="addToWishlist(product)"
-    [ngClass]="{ active: toggle }"
-    *ngIf="!toggle"
+    [ngClass]="{ active: wishlist }"
+    *ngIf="!wishlist"
   >
     <mat-icon class="primary-medium">favorite</mat-icon>
   </button>
 
   <button
     class="product__wishlist"
-    [ngClass]="{ active: toggle }"
+    [ngClass]="{ active: wishlist }"
     (click)="removeToWishlist(product)"
-    *ngIf="toggle"
+    *ngIf="wishlist"
   >
     <mat-icon class="primary-medium">favorite</mat-icon>
   </button>
@@ -38,7 +38,7 @@
   </h3>
   <app-rating [rating]="product.rating.rate"></app-rating>
   <a
-    [routerLink]="['category', product.category]"
+    routerLink="/category/{{ product.category }}"
     class="product__category"
     title="{{ product.category }}"
     >{{ product.category }}</a

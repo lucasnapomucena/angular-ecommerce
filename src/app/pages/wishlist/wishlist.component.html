@@ -4,6 +4,7 @@
   <section fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
     <app-product-list
       [products]="wishlist"
+      [wishlist]="wishlistStatus"
       fxFlex="100"
       fxLayoutAlign="center center"
       *ngIf="wishlist.length > 0"
