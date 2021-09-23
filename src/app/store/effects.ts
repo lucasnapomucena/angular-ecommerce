@@ -2,9 +2,18 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
+import { Product } from '../core/models/product.model';
 
 import { ProductService } from '../services/product.service';
-import { ActionTypes } from './actions';
+import {
+  AddToCart,
+  AddToWishlist,
+  GetItems,
+  GetItemsWishlist,
+  LoadItems,
+  RemoveFromCart,
+  RemoveFromWishlist
+} from './actions';
 
 @Injectable()
 export class ShopEffects {
@@ -15,13 +24,12 @@ export class ShopEffects {
 
   loadProducts$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(ActionTypes.LoadItems),
+      ofType(GetItems),
       mergeMap(() =>
         this.productService.getProducts().pipe(
-          map((products) => ({
-            type: ActionTypes.LoadSuccess,
-            payload: products
-          })),
+          map((products: Product[]) => {
+            return LoadItems({ payload: products });
+          }),
           catchError(() => EMPTY)
         )
       )

@@ -22,7 +22,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { SharedModule } from './shared/shared.module';
 import { ShopEffects } from './store/effects';
-import { ShopReducer } from './store/reducer';
+import { reducer } from './store/reducer';
 import { RatingComponent } from './components/rating/rating.component';
 
 const routes: Routes = [
@@ -58,7 +58,7 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    StoreModule.forRoot({ shop: ShopReducer }),
+    StoreModule.forRoot({ shop: reducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production

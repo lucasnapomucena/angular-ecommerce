@@ -49,8 +49,8 @@ export class PageProductComponent implements OnInit, OnDestroy {
     return this.httpClient.get<Product[]>(productUrl + '/' + params);
   }
 
-  addToCart(item: Product) {
+  addToCart(payload: Product) {
     this.buttonAddToCart = true;
-    this.store.dispatch(new AddToCart(item));
+    this.store.dispatch(AddToCart({ payload }));
   }
 }

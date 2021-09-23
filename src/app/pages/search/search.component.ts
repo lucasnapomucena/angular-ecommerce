@@ -24,7 +24,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.store.dispatch(new GetItems());
+    this.store.dispatch(GetItems());
 
     this.paramsSubscription = this.activeRoute.params.subscribe((params) => {
       this.param = params['name'];

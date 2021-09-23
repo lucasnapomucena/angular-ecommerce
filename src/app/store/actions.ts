@@ -1,53 +1,26 @@
-import { Action } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 
 import { Product } from '../core/models/product.model';
 
-export enum ActionTypes {
-  Add = '[Product] Add to cart',
-  Remove = '[Product] Remove from cart',
-  AddWishlist = '[Product] Add to wishlist',
-  RemoveWishlist = '[Product] Remove from wishlist',
-  LoadItemsWishlist = '[Product] Load items wishlist',
-  LoadItems = '[Product] Load items from server',
-  LoadSuccess = '[Product] Load success'
-}
-
-export class AddToCart implements Action {
-  readonly type = ActionTypes.Add;
-  constructor(public payload: Product) {}
-}
-
-export class RemoveFromCart implements Action {
-  readonly type = ActionTypes.Remove;
-  constructor(public payload: Product) {}
-}
-
-export class AddToWishlist implements Action {
-  readonly type = ActionTypes.AddWishlist;
-  constructor(public payload: Product) {}
-}
-
-export class RemoveFromWishlist implements Action {
-  readonly type = ActionTypes.RemoveWishlist;
-  constructor(public payload: Product) {}
-}
-export class GetItemsWishlist implements Action {
-  readonly type = ActionTypes.LoadItemsWishlist;
-}
-
-export class GetItems implements Action {
-  readonly type = ActionTypes.LoadItems;
-}
-
-export class LoadItems implements Action {
-  readonly type = ActionTypes.LoadSuccess;
-  constructor(public payload: Product[]) {}
-}
-
-export type Actions =
-  | AddToCart
-  | RemoveFromCart
-  | AddToWishlist
-  | RemoveFromWishlist
-  | GetItems
-  | LoadItems;
+export const AddToCart = createAction(
+  '[Product] Add to cart',
+  props<{ payload: Product }>()
+);
+export const RemoveFromCart = createAction(
+  '[Product] Remove from cart',
+  props<{ payload: Product }>()
+);
+export const AddToWishlist = createAction(
+  '[Product] Add to wishlist',
+  props<{ payload: Product }>()
+);
+export const RemoveFromWishlist = createAction(
+  '[Product] Remove from wishlist',
+  props<{ payload: Product }>()
+);
+export const GetItems = createAction('[Product] Load items from server');
+export const GetItemsWishlist = createAction('[Product] Get items wishlist');
+export const LoadItems = createAction(
+  '[Product] Load success',
+  props<{ payload: Product[] }>()
+);

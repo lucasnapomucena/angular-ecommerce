@@ -29,8 +29,8 @@ export class CartComponent implements OnInit {
   goToHome() {
     this.router.navigate(['']);
   }
-  removeFromCart(item: Product) {
-    this.store.dispatch(new RemoveFromCart(item));
+  removeFromCart(payload: Product) {
+    this.store.dispatch(RemoveFromCart({ payload }));
   }
   ngOnInit(): void {}
 }

@@ -21,23 +21,23 @@ export class ProductComponent implements OnInit {
   @Input() product: Product;
   @Input() wishlist: boolean = false;
 
-  addToCart(item: Product) {
-    this.store.dispatch(new AddToCart(item));
+  addToCart(payload: Product) {
+    this.store.dispatch(AddToCart({ payload }));
     this.inCart = true;
   }
 
-  removeFromCart(item: Product) {
-    this.store.dispatch(new RemoveFromCart(item));
+  removeFromCart(payload: Product) {
+    this.store.dispatch(RemoveFromCart({ payload }));
     this.inCart = false;
   }
 
-  addToWishlist(item: Product) {
-    this.store.dispatch(new AddToWishlist(item));
+  addToWishlist(payload: Product) {
+    this.store.dispatch(AddToWishlist({ payload }));
     this.wishlist = !this.wishlist;
   }
 
-  removeToWishlist(item: Product) {
-    this.store.dispatch(new RemoveFromWishlist(item));
+  removeToWishlist(payload: Product) {
+    this.store.dispatch(RemoveFromWishlist({ payload }));
     this.wishlist = false;
   }
 

@@ -21,6 +21,6 @@ export class WishlistComponent implements OnInit {
 
   ngOnInit(): void {
     this.wishlistStatus = true;
-    this.store.dispatch(new GetItemsWishlist());
+    this.store.dispatch(GetItemsWishlist());
   }
 }
