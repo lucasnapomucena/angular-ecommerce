@@ -5,6 +5,10 @@
     line-height: 36px;
     margin-bottom: 36px;
   }
+
+  &__image {
+    object-fit: contain;
+  }
   &__empty {
     p {
       font-size: 1.5rem;
