@@ -4,7 +4,11 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
-import { AddToCart } from '../../store/actions';
+import {
+  AddToCart,
+  AddToWishlist,
+  RemoveFromWishlist
+} from '../../store/actions';
 import { productUrl } from './../../config/api';
 import { Product } from './../../core/models/product.model';
 
@@ -52,5 +56,13 @@ export class PageProductComponent implements OnInit, OnDestroy {
   addToCart(payload: Product) {
     this.buttonAddToCart = true;
     this.store.dispatch(AddToCart({ payload }));
+  }
+
+  addToWishlist(payload: Product) {
+    this.store.dispatch(AddToWishlist({ payload }));
+  }
+
+  removeToWishlist(payload: Product) {
+    this.store.dispatch(RemoveFromWishlist({ payload }));
   }
 }
