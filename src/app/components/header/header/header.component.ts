@@ -37,7 +37,11 @@ export class HeaderComponent implements OnInit {
     return total + item.price * 1;
   }
 
-  goToCart() {
+  goTo(page: string) {
+    this.router.navigate([page]);
+  }
+
+  goToAccount() {
     this.router.navigate(['/cart']);
   }
 

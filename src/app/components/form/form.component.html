@@ -1,0 +1,91 @@
+<form
+  [(formGroup)]="form"
+  (ngSubmit)="onSubmit()"
+  fxFlex="100"
+  *ngIf="forms.length > 0"
+>
+  <div *ngFor="let form of forms" fxLayoutGap="16px">
+    <mat-form-field
+      appearance="fill"
+      *ngIf="form.inputType == 'input'"
+      fxFlex="100"
+    >
+      <mat-label>{{ form.label }}</mat-label>
+      <input
+        matInput
+        fxFlex="100"
+        name="{{ form.name }}"
+        type="{{ form.type }}"
+        formControlName="{{ form.name }}"
+        [placeholder]="form?.placeholder"
+        [required]="form.required"
+      />
+    </mat-form-field>
+    <mat-radio-group
+      aria-label="Select an option"
+      *ngIf="form.inputType == 'radio'"
+      appearance="fill"
+      formControlName="{{ form.name }}"
+      fxLayoutGap="16px"
+    >
+      <mat-radio-button
+        *ngFor="let gender of form.value"
+        name="{{ gender.name }}"
+        value="{{ gender.name }}"
+        >{{ gender.name }}</mat-radio-button
+      >
+    </mat-radio-group>
+
+    <mat-form-field
+      appearance="fill"
+      *ngIf="form.inputType == 'date'"
+      fxFlex="100"
+    >
+      <mat-label>{{ form.label }}</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="{{ form.name }}"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field
+      appearance="fill"
+      *ngIf="form.inputType == 'select'"
+      fxFlex="100"
+    >
+      <mat-label fxFlex="100">{{ form.label }}</mat-label>
+      <mat-select formControlName="{{ form.name }}">
+        <mat-option *ngFor="let select of form.value" [value]="select.name">
+          {{ select.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field
+      *ngIf="form.inputType == 'textarea'"
+      appearance="fill"
+      fxFlex="100"
+    >
+      <mat-label>{{ form.label }}</mat-label>
+      <textarea
+        matInput
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="5"
+      ></textarea>
+    </mat-form-field>
+  </div>
+
+  <button
+    mat-raised-button
+    type="submit"
+    color="primary"
+    [disabled]="this.form.invalid"
+  >
+    Submit
+  </button>
+
+  {{ form.value | json }}
+</form>

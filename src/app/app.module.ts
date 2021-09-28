@@ -1,7 +1,9 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -24,6 +26,8 @@ import { SharedModule } from './shared/shared.module';
 import { ShopEffects } from './store/effects';
 import { reducer } from './store/reducer';
 import { RatingComponent } from './components/rating/rating.component';
+import { FormComponent } from './components/form/form.component';
+import { AccountComponent } from './pages/account/account.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -32,6 +36,7 @@ const routes: Routes = [
   { path: 'product/:id', component: PageProductComponent },
   { path: 'wishlist', component: WishlistComponent },
   { path: 'search/:name', component: SearchComponent },
+  { path: 'account', component: AccountComponent },
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '/404' }
 ];
@@ -49,15 +54,19 @@ const routes: Routes = [
     WishlistComponent,
     SearchComponent,
     NotFoundComponent,
-    RatingComponent
+    RatingComponent,
+    FormComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
+    MatFormFieldModule,
     FormsModule,
-    ReactiveFormsModule,
     SharedModule,
+    ReactiveFormsModule,
     StoreModule.forRoot({ shop: reducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

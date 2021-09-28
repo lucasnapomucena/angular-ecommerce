@@ -44,12 +44,15 @@
           >favorite_border</mat-icon
         >
       </a>
-      <button aria-label="icon-button with a account">
+      <button
+        aria-label="icon-button with a account"
+        (click)="goTo('/account')"
+      >
         <mat-icon class="primary-light">person_outline</mat-icon>
       </button>
       <button
         aria-label="icon-button with a shopping cart"
-        (click)="goToCart()"
+        (click)="goTo('/cart')"
       >
         <mat-icon class="primary-light" matBadge="{{ products.length }}"
           >storefront</mat-icon

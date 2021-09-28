@@ -1,0 +1,82 @@
+[
+  {
+      "label": "Type your first name",
+      "name": "name",
+      "type": "text",
+      "inputType": "input",
+      "required": true,
+      "validator": "name",
+      "placeholder":"",
+      "value": []
+  },
+  {
+    "label": "Type your last name",
+    "name": "lastname",
+    "type": "text",
+    "inputType": "input",
+    "required": true,
+    "validator": "name",
+    "placeholder":"",
+    "value": []
+},
+  {
+    "label": "Type your e-mail",
+      "name": "email",
+      "type": "email",
+      "inputType": "input",
+      "required": true,
+      "validator": "email",
+      "placeholder":"name@name.com",
+      "value": []
+  },
+
+  {
+    "label": "Enter your birthday",
+    "name": "date",
+    "type": "date",
+    "inputType": "date",
+    "required": true,
+    "validator": "date",
+    "placeholder": "",
+    "value": []
+},
+{
+  "label": "Select your gender:",
+  "name": "gender",
+  "type": "radio",
+  "inputType": "radio",
+  "required": true,
+  "validator": "gender",
+  "value": [{"name": "Masculine"}, {"name": "Feminine"}]
+},
+
+{
+  "label": "Enter your phone number",
+  "name": "phone",
+  "type": "tel",
+  "inputType": "input",
+  "required": true,
+  "validator": "phone",
+  "placeholder":"(11) 00000-0000",
+  "value": []
+},
+{
+  "label": "How did you meet us?",
+  "name": "select",
+  "type": "select",
+  "inputType": "select",
+  "required": false,
+  "validator": "select",
+  "placeholder": "",
+  "value": [{"name": "Google"}, {"name": "Facebook"}, {"name": "Linkedin"}]
+},
+  {
+    "label": "Enter a message",
+      "name": "message",
+      "inputType": "textarea",
+      "type": "text",
+      "required": null,
+      "placeholder": "Enter a message",
+      "value": []
+  }
+]
