@@ -1,6 +1,8 @@
-<main class="container" fxLayout="column">
+<main class="container wishlist" fxLayout="column">
   <h1>Wishlist</h1>
-  <p *ngIf="wishlist.length <= 0">There were no lost products as a wishlist</p>
+  <div *ngIf="wishlist.length <= 0" class="wishlist__empty">
+    <p>There were no lost products as a wishlist</p>
+  </div>
   <section fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
     <app-product-list
       [products]="wishlist"

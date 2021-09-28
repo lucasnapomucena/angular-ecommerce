@@ -1,0 +1,14 @@
+.wishlist {
+  h1 {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    margin-bottom: 36px;
+  }
+
+  &__empty {
+    p {
+      font-size: 1.5rem;
+    }
+  }
+}
