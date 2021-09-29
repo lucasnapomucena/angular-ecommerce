@@ -1,0 +1,9 @@
+.not-found {
+  &__image {
+    background-image: url('/assets/404-error.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 360px;
+  }
+}
