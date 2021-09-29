@@ -14,6 +14,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   exports: [
@@ -31,7 +32,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatBadgeModule,
     MatInputModule,
     MatRadioModule,
-    MatTabsModule
+    MatTabsModule,
+    MatProgressBarModule
   ]
 })
 export class SharedModule {}

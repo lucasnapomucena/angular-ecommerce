@@ -9,26 +9,27 @@
         alt="banner account"
       />
     </div>
-    <mat-tab-group
-      animationDuration="0ms"
-      fxFlex="40"
-      fxLayout="column wrap"
-      fxLayoutGap="24px"
-    >
-      <mat-tab label="Login">
-        <app-form
-          [forms]="formLoginAccount"
-          [form]="formGroupLogin"
-          class="form"
-        ></app-form
-      ></mat-tab>
-      <mat-tab label="Create Account">
-        <app-form
-          [forms]="formCreateAccount"
-          [form]="formGroupCreate"
-          class="form"
-        ></app-form
-      ></mat-tab>
-    </mat-tab-group>
+    <mat-card fxFlex="40">
+      <mat-tab-group
+        animationDuration="0ms"
+        fxLayout="column wrap"
+        fxLayoutGap="24px"
+      >
+        <mat-tab label="Login">
+          <app-form
+            [forms]="formLoginAccount"
+            [form]="formGroupLogin"
+            class="form"
+          ></app-form
+        ></mat-tab>
+        <mat-tab label="Create Account">
+          <app-form
+            [forms]="formCreateAccount"
+            [form]="formGroupCreate"
+            class="form"
+          ></app-form
+        ></mat-tab>
+      </mat-tab-group>
+    </mat-card>
   </div>
 </main>

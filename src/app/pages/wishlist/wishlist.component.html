@@ -3,7 +3,7 @@
   <div *ngIf="wishlist.length <= 0" class="wishlist__empty">
     <p>There were no lost products as a wishlist</p>
   </div>
-  <section fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+  <section fxLayout="row" fxLayoutAlign="start start" fxFlex="100">
     <app-product-list
       [products]="wishlist"
       [wishlist]="wishlistStatus"
