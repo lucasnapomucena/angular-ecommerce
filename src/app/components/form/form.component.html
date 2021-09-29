@@ -6,7 +6,7 @@
 >
   <div *ngFor="let form of forms" fxLayoutGap="16px">
     <mat-form-field
-      appearance="fill"
+      appearance="legacy"
       *ngIf="form.inputType == 'input'"
       fxFlex="100"
     >
@@ -24,7 +24,7 @@
     <mat-radio-group
       aria-label="Select an option"
       *ngIf="form.inputType == 'radio'"
-      appearance="fill"
+      appearance="legacy"
       formControlName="{{ form.name }}"
       fxLayoutGap="16px"
     >
@@ -37,7 +37,7 @@
     </mat-radio-group>
 
     <mat-form-field
-      appearance="fill"
+      appearance="legacy"
       *ngIf="form.inputType == 'date'"
       fxFlex="100"
     >
@@ -52,8 +52,8 @@
     </mat-form-field>
 
     <mat-form-field
-      appearance="fill"
-      *ngIf="form.inputType == 'select'"
+      appearance="legacy"
+      *ngIf="form.inputType == 'select' && form.name != 'country'"
       fxFlex="100"
     >
       <mat-label fxFlex="100">{{ form.label }}</mat-label>
@@ -63,10 +63,16 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-
+    <mat-select-country
+      formControlName="{{ form.name }}"
+      *ngIf="form.inputType == 'select' && form.name == 'country'"
+      [countries]="form.value"
+      autocomplete="off"
+    >
+    </mat-select-country>
     <mat-form-field
       *ngIf="form.inputType == 'textarea'"
-      appearance="fill"
+      appearance="legacy"
       fxFlex="100"
     >
       <mat-label>{{ form.label }}</mat-label>

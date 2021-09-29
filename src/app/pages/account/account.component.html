@@ -1,9 +1,15 @@
-<div class="container account" fxLayout="column wrap" fxFlex="50%">
+<div class="container account" fxLayout="column wrap">
   <h1>Create account</h1>
-  <app-form
-    [forms]="forms"
-    [form]="form"
-    fxFlex="0 1 750px"
-    class="form"
-  ></app-form>
+
+  <div fxLayout="row" fxLayoutGap="32px">
+    <div
+      style="
+        width: 100%;
+        flex: 0 0 50%;
+        background-image: url(/assets/background-create-account.jpg);
+      "
+    ></div>
+
+    <app-form [forms]="forms" [form]="form" class="form"></app-form>
+  </div>
 </div>

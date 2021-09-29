@@ -60,6 +60,46 @@
   "placeholder":"(11) 00000-0000",
   "value": []
 },
+
+{
+  "label": "Select Country",
+  "name": "country",
+  "type": "select",
+  "inputType": "select",
+  "required": false,
+  "validator": "select",
+  "placeholder": "",
+  "value": [
+    {
+      "name": "Germany",
+      "alpha2Code": "DE",
+      "alpha3Code": "DEU",
+      "numericCode": "276",
+      "callingCode": "+49"
+    },
+    {
+      "name": "Greece",
+      "alpha2Code": "GR",
+      "alpha3Code": "GRC",
+      "numericCode": "300",
+      "callingCode": "+30"
+    },
+    {
+      "name": "France",
+      "alpha2Code": "FR",
+      "alpha3Code": "FRA",
+      "numericCode": "250",
+      "callingCode": "+33"
+    },
+    {
+      "name": "Belgium",
+      "alpha2Code": "BE",
+      "alpha3Code": "BEL",
+      "numericCode": "056",
+      "callingCode": "+32"
+    }
+  ]
+},
 {
   "label": "How did you meet us?",
   "name": "select",
@@ -70,13 +110,14 @@
   "placeholder": "",
   "value": [{"name": "Google"}, {"name": "Facebook"}, {"name": "Linkedin"}]
 },
-  {
-    "label": "Enter a message",
-      "name": "message",
-      "inputType": "textarea",
-      "type": "text",
-      "required": null,
-      "placeholder": "Enter a message",
-      "value": []
-  }
+{
+  "label": "Enter your password",
+  "name": "password",
+  "type": "password",
+  "inputType": "input",
+  "required": true,
+  "validator": "password",
+  "placeholder":"********",
+  "value": []
+}
 ]

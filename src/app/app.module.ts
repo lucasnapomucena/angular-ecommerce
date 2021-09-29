@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectCountryModule } from '@angular-material-extensions/select-country';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -67,6 +68,7 @@ const routes: Routes = [
     FormsModule,
     SharedModule,
     ReactiveFormsModule,
+    MatSelectCountryModule.forRoot('de'),
     StoreModule.forRoot({ shop: reducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

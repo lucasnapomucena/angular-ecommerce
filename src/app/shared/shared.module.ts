@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatSelectCountryModule } from '@angular-material-extensions/select-country';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -17,6 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
   exports: [
     MatNativeDateModule,
     FlexLayoutModule,
+    MatSelectCountryModule,
     MatButtonModule,
     MatCardModule,
     MatIconModule,
