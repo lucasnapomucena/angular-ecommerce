@@ -14,21 +14,36 @@ import { FormField } from './../../core/models/form.model';
   styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
-  forms: FormField[] = [];
-  form = new FormGroup({});
+  formCreateAccount: FormField[] = [];
+  formLoginAccount: FormField[] = [];
+  formGroupCreate = new FormGroup({});
+  formGroupLogin = new FormGroup({});
+
   constructor(private httpClient: HttpClient) {}
 
   ngOnInit(): void {
     this.httpClient
-      .get<FormField[]>('/assets/schemaForm.json')
+      .get<FormField[]>('/assets/createAccountForm.json')
       .subscribe((data) => {
         for (const form of data) {
-          this.form.addControl(
+          this.formGroupCreate.addControl(
             form.name,
             new FormControl('', this.getValidator(form))
           );
         }
-        this.forms = data;
+        this.formCreateAccount = data;
+      });
+
+    this.httpClient
+      .get<FormField[]>('/assets/loginAccountForm.json')
+      .subscribe((data) => {
+        for (const form of data) {
+          this.formGroupLogin.addControl(
+            form.name,
+            new FormControl('', this.getValidator(form))
+          );
+        }
+        this.formLoginAccount = data;
       });
   }
 
@@ -40,11 +55,6 @@ export class AccountComponent implements OnInit {
         return Validators.required;
       default:
         return null;
-    }
-  }
-  onSubmit(): void {
-    if (this.form.valid) {
-      let value = this.form.value;
     }
   }
 }

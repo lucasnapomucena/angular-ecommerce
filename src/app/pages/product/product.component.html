@@ -25,6 +25,23 @@
     fxLayoutGap="16px"
   >
     <h1 class="product__info-title">{{ product.title }}</h1>
+    <button
+      class="product__info-wishlist"
+      (click)="addToWishlist(product)"
+      [ngClass]="{ active: wishlist }"
+      *ngIf="!wishlist"
+    >
+      <mat-icon class="primary-medium">favorite</mat-icon>
+    </button>
+
+    <button
+      class="product__info-wishlist"
+      [ngClass]="{ active: wishlist }"
+      (click)="removeToWishlist(product)"
+      *ngIf="wishlist"
+    >
+      <mat-icon class="primary-medium">favorite</mat-icon>
+    </button>
     <app-rating [rating]="product.rating.rate"></app-rating>
     <p class="product__info-price">{{ product.price | currency: 'EUR' }}</p>
     <button

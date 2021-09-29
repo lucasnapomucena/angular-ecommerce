@@ -5,13 +5,28 @@
     }
   }
   &__info {
+    position: relative;
     h1 {
       font-size: 2rem;
       line-height: 2.5rem;
       font-weight: 500;
       color: var(--primary-dark);
+      width: calc(100% - 36px);
     }
 
+    &-wishlist {
+      position: absolute;
+      right: 8px;
+      top: 8px;
+      z-index: 1;
+      opacity: 0.5;
+      &.active {
+        opacity: 1;
+        .mat-icon {
+          color: var(--primary-light);
+        }
+      }
+    }
     &-price {
       font-size: 1.5rem;
     }

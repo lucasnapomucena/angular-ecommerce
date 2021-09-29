@@ -5,8 +5,8 @@ export interface FormField {
   inputType: string;
   required?: boolean;
   validator?: string;
-  country: Country[];
-  value: Value[];
+  country?: Country[];
+  value?: Value[];
 }
 
 export interface Value {

@@ -23,6 +23,7 @@ export class PageProductComponent implements OnInit, OnDestroy {
   product: any = {};
   paramsSubscription: Subscription;
   productSubscription: Subscription;
+  wishlist: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -60,9 +61,11 @@ export class PageProductComponent implements OnInit, OnDestroy {
 
   addToWishlist(payload: Product) {
     this.store.dispatch(AddToWishlist({ payload }));
+    this.wishlist = true;
   }
 
   removeToWishlist(payload: Product) {
     this.store.dispatch(RemoveFromWishlist({ payload }));
+    this.wishlist = false;
   }
 }

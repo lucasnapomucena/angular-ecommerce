@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Type your e-mail",
+      "name": "email",
+      "type": "email",
+      "inputType": "input",
+      "required": true,
+      "validator": "email",
+      "placeholder":"name@name.com",
+      "value": []
+  },
+{
+  "label": "Enter your password",
+  "name": "password",
+  "type": "password",
+  "inputType": "input",
+  "required": true,
+  "validator": "password",
+  "placeholder":"********",
+  "value": []
+}
+]
