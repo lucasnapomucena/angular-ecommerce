@@ -1,0 +1,13 @@
+<mat-checkbox color="primary">Check me!</mat-checkbox>
+
+<mat-slider
+  thumbLabel
+  [displayWith]="formatLabel"
+  tickInterval="100"
+  step="10"
+  min="0"
+  max="1000"
+  aria-label="units"
+  color="primary"
+  (input)="onInputChange($event)"
+></mat-slider>

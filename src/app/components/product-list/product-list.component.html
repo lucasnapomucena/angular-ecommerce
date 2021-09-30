@@ -13,14 +13,18 @@
 >
   <button
     mat-icon-button
+    color="primary"
     (click)="onChangeList(true)"
     [ngClass]="{ active: layout }"
+    class="primary-light"
   >
     <mat-icon>calendar_view_week</mat-icon>
   </button>
 
   <button
     mat-icon-button
+    color="primary"
+    class="primary-light"
     (click)="onChangeList(false)"
     [ngClass]="{ active: !layout }"
   >

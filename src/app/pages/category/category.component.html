@@ -1,10 +1,15 @@
-<main class="container category" fxLayout="column">
-  <h1>Category Products: {{ name }}</h1>
-  <section fxLayout="column" fxLayoutAlign="center center">
-    <app-product-list
-      [products]="items"
-      fxLayout="column"
-      fxFill
-    ></app-product-list>
-  </section>
-</main>
+<div class="container category" fxLayout="row wrap" fxLayoutGap="16px">
+  <h1 fxFlex="100">Category Products: {{ name }}</h1>
+  <aside fxFlex="calc(15% - 16px)">
+    <app-filter fxLayout="column"></app-filter>
+  </aside>
+  <main fxFlex="calc(85% - 16px)">
+    <section fxLayout="row" fxLayoutAlign="center center">
+      <app-product-list
+        [products]="items"
+        fxLayout="column"
+        fxFill
+      ></app-product-list>
+    </section>
+  </main>
+</div>

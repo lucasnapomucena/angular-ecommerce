@@ -29,6 +29,7 @@ import { reducer } from './store/reducer';
 import { RatingComponent } from './components/rating/rating.component';
 import { FormComponent } from './components/form/form.component';
 import { AccountComponent } from './pages/account/account.component';
+import { FilterComponent } from './components/filter/filter.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -57,7 +58,8 @@ const routes: Routes = [
     NotFoundComponent,
     RatingComponent,
     FormComponent,
-    AccountComponent
+    AccountComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,

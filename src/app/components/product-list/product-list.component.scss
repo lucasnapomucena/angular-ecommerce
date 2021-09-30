@@ -1,12 +1,12 @@
 .product-list {
   &__item {
-    flex: 0 0 calc(20% - 16px);
+    flex: 0 0 calc(25% - 16px);
     transition: 0.3s;
   }
 
   &.active {
     .product-list__item {
-      flex: 0 0 calc(25% - 16px);
+      flex: 0 0 calc(33% - 16px);
     }
   }
 }
