@@ -4,17 +4,42 @@
   mode="indeterminate"
   *ngIf="products.length <= 0"
 ></mat-progress-spinner>
+
+<div
+  *ngIf="products.length > 0"
+  fxLayout="row wrap"
+  fxLayoutAlign="end center"
+  class="product-list__box"
+>
+  <button
+    mat-icon-button
+    (click)="onChangeList(true)"
+    [ngClass]="{ active: layout }"
+  >
+    <mat-icon>calendar_view_week</mat-icon>
+  </button>
+
+  <button
+    mat-icon-button
+    (click)="onChangeList(false)"
+    [ngClass]="{ active: !layout }"
+  >
+    <mat-icon>view_week</mat-icon>
+  </button>
+</div>
+
 <div
   class="product-list"
   fxLayout="row wrap"
   fxLayoutGap="16px"
   fxFlex="100"
   *ngIf="products.length > 0"
+  [ngClass]="{ active: !layout }"
 >
   <app-product
     *ngFor="let product of products"
     [product]="product"
     [wishlist]="wishlist"
-    fxFlex="0 0 calc(20% - 16px)"
+    class="product-list__item"
   ></app-product>
 </div>

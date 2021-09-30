@@ -3,13 +3,13 @@
   <div *ngIf="wishlist.length <= 0" class="wishlist__empty">
     <p>There were no lost products as a wishlist</p>
   </div>
-  <section fxLayout="row" fxLayoutAlign="start start" fxFlex="100">
+  <section fxLayout="column" fxLayoutAlign="center center">
     <app-product-list
       [products]="wishlist"
       [wishlist]="wishlistStatus"
-      fxFlex="100"
-      fxLayoutAlign="center center"
+      fxLayout="column"
       *ngIf="wishlist.length > 0"
+      fxFill
     ></app-product-list>
   </section>
 </main>

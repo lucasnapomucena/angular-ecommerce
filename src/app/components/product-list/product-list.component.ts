@@ -10,7 +10,13 @@ import { Product } from '../../core/models/product.model';
 export class ProductListComponent implements OnInit {
   @Input() products: Product[] = [];
   @Input() wishlist: boolean;
+  @Input() layout: boolean = true;
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  onChangeList(status: boolean) {
+    this.layout = status ? true : false;
+  }
 }

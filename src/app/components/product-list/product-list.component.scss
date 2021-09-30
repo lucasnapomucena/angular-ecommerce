@@ -1,0 +1,23 @@
+.product-list {
+  &__item {
+    flex: 0 0 calc(20% - 16px);
+    transition: 0.3s;
+  }
+
+  &.active {
+    .product-list__item {
+      flex: 0 0 calc(25% - 16px);
+    }
+  }
+}
+
+.product-list__box {
+  margin-bottom: 24px;
+  button {
+    opacity: 0.5;
+
+    &.active {
+      opacity: 1;
+    }
+  }
+}
