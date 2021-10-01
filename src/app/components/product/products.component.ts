@@ -44,4 +44,8 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.inCart = false;
   }
+
+  productFilter($event) {
+    this.product = $event;
+  }
 }

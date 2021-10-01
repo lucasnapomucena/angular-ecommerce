@@ -1,7 +1,7 @@
 <div class="container category" fxLayout="row wrap" fxLayoutGap="16px">
   <h1 fxFlex="100">Category Products: {{ name }}</h1>
-  <aside fxFlex="calc(15% - 16px)">
-    <app-filter fxLayout="column"></app-filter>
+  <aside fxFlex="calc(15% - 16px)" *ngIf="items.length > 0">
+    <app-filter fxLayout="column" [products]="items"></app-filter>
   </aside>
   <main fxFlex="calc(85% - 16px)">
     <section fxLayout="row" fxLayoutAlign="center center">
@@ -11,5 +11,15 @@
         fxFill
       ></app-product-list>
     </section>
+
+    <mat-paginator
+      [length]="4"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page"
+      fxLayoutAlign="center center"
+      *ngIf="items.length > 5"
+    >
+    </mat-paginator>
   </main>
 </div>

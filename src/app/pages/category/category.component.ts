@@ -29,7 +29,12 @@ export class CategoryComponent implements OnInit {
       });
     });
   }
+
   getProductToCategory(params: string): Observable<Product[]> {
     return this.httpClient.get<Product[]>(categoryUrl + '/' + params);
+  }
+
+  productFilter($event) {
+    this.items = $event;
   }
 }

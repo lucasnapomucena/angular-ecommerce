@@ -19,4 +19,8 @@ export class ProductListComponent implements OnInit {
   onChangeList(status: boolean) {
     this.layout = status ? true : false;
   }
+
+  productFilter($event) {
+    this.products = $event;
+  }
 }
