@@ -11,6 +11,7 @@ export class ProductListComponent implements OnInit {
   @Input() products: Product[] = [];
   @Input() wishlist: boolean;
   @Input() layout: boolean = true;
+  @Input() selectStyle: boolean = true;
 
   constructor() {}
 

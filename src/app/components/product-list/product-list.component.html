@@ -17,6 +17,7 @@
     (click)="onChangeList(true)"
     [ngClass]="{ active: layout }"
     class="primary-light"
+    *ngIf="selectStyle"
   >
     <mat-icon>calendar_view_week</mat-icon>
   </button>
@@ -27,6 +28,7 @@
     class="primary-light"
     (click)="onChangeList(false)"
     [ngClass]="{ active: !layout }"
+    *ngIf="selectStyle"
   >
     <mat-icon>view_week</mat-icon>
   </button>

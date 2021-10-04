@@ -1,0 +1,11 @@
+table.mat-table {
+  box-shadow: none;
+
+  tr.mat-row + tr.mat-row {
+    margin-top: 1rem;
+  }
+  td.mat-cell,
+  th.mat-header-cell {
+    padding: 0.5rem;
+  }
+}

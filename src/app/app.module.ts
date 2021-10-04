@@ -30,10 +30,12 @@ import { RatingComponent } from './components/rating/rating.component';
 import { FormComponent } from './components/form/form.component';
 import { AccountComponent } from './pages/account/account.component';
 import { FilterComponent } from './components/filter/filter.component';
+import { PaymentComponent } from './pages/payment/payment.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'cart', component: CartComponent },
+  { path: 'payment', component: PaymentComponent },
   { path: 'category/:name', component: CategoryComponent },
   { path: 'product/:id', component: PageProductComponent },
   { path: 'wishlist', component: WishlistComponent },
@@ -59,7 +61,8 @@ const routes: Routes = [
     RatingComponent,
     FormComponent,
     AccountComponent,
-    FilterComponent
+    FilterComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
