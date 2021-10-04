@@ -2,13 +2,30 @@
   <div fxFlex="33" class="profile" fxLayout="column">
     <mat-card fxLayout="column">
       <h3>Profile</h3>
-      <div class="profile__form-name" fxLayout="row">
+      <button
+        class="primary-light profile__edit-btn"
+        fxLayoutAlign="center center"
+        *ngIf="!profileStatus"
+        (click)="onEditProfile()"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+      <div class="profile__content" fxLayout="column">
+        <div class="profile__content-edit" *ngIf="!profileStatus">
+          <p><strong>Email:</strong> {{ checkoutForm.value.email }}</p>
+          <p>
+            <strong>First name</strong>: {{ checkoutForm.value.name }}
+            {{ checkoutForm.value.lastName }}
+          </p>
+        </div>
+
         <form
           [formGroup]="checkoutForm"
           (ngSubmit)="onSubmit()"
           fxLayout="row wrap"
           fxLayoutGap="16px"
           *ngIf="profileStatus"
+          class="profile__content-form"
         >
           <mat-form-field appearance="legacy" fxFlex="calc(50% - 16px)">
             <mat-label>First name</mat-label>
@@ -43,12 +60,10 @@
             mat-raised-button
             color="primary"
             fxFlex="100%"
-            [disabled]="this.checkoutForm.invalid"
+            [disabled]="!this.checkoutForm.valid"
           >
             Continue
           </button>
-
-          {{ checkoutForm.value | json }}
         </form>
       </div>
     </mat-card>
@@ -57,29 +72,78 @@
     <mat-card fxLayout="column">
       <h3>Shipping</h3>
 
-      <div *ngIf="this.checkoutForm.invalid">
+      <div *ngIf="!this.checkoutForm.valid">
         <p>Aguardando o preenchimento dos dados</p>
       </div>
-      <div
-        class="shipping__form-name"
-        fxLayout="row"
-        fxLayoutGap="16px"
-        *ngIf="shippingStatus && !this.checkoutForm.invalid"
-      >
-        <mat-form-field appearance="legacy">
-          <mat-label>CEP</mat-label>
-          <input matInput />
-        </mat-form-field>
+      <div class="shipping__form-name" fxLayout="row wrap" fxLayoutGap="16px">
+        <form
+          [formGroup]="shippingForm"
+          fxLayout="column wrap"
+          fxLayoutGap="16px"
+          *ngIf="checkoutForm.valid && shippingStatus"
+        >
+          <mat-form-field appearance="legacy">
+            <mat-label>CEP</mat-label>
+            <input matInput formControlName="cep" />
+          </mat-form-field>
+          <div
+            fxLayout="row wrap"
+            fxLayoutGap="16px"
+            *ngIf="shippingFormStatus"
+          >
+            <mat-form-field appearance="legacy" fxFlex="calc(50% - 16px)">
+              <mat-label>Street</mat-label>
+              <input matInput formControlName="street" readonly />
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy" fxFlex="calc(50% - 16px)">
+              <mat-label>Number</mat-label>
+              <input matInput formControlName="number" />
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy" fxFlex="calc(100% - 16px)">
+              <mat-label>Complement</mat-label>
+              <input matInput formControlName="complement" />
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy" fxFlex="calc(100% - 16px)">
+              <mat-label>District</mat-label>
+              <input matInput formControlName="district" readonly />
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy" fxFlex="calc(50% - 16px)">
+              <mat-label>City</mat-label>
+              <input matInput formControlName="city" readonly />
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy" fxFlex="calc(50% - 16px)">
+              <mat-label>State</mat-label>
+              <input matInput formControlName="state" readonly />
+            </mat-form-field>
+
+            <button
+              mat-raised-button
+              color="primary"
+              fxFlex="100%"
+              [disabled]="!this.shippingForm.valid"
+              (click)="onPayment()"
+            >
+              Continue
+            </button>
+          </div>
+        </form>
       </div>
     </mat-card>
     <mat-card class="payment" fxLayout="column">
       <h3>Payment</h3>
-      <div fxLayout="row" fxLayoutGap="16px"></div>
+      <div fxLayout="row" fxLayoutGap="16px">
+        <p>Página de pagamento</p>
+      </div>
     </mat-card>
   </div>
 
-  <div fxFlex="33" fxLayout="column" class="shipping" fxLayoutGap="32px">
-    <mat-card fxLayout="column"
+  <div fxFlex="33" fxLayout="column" class="minicart" fxLayoutGap="32px">
+    <mat-card fxLayout="column" class="minicart__content"
       ><h3>Resume</h3>
 
       <table
