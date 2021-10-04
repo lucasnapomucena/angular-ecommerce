@@ -1,86 +1,131 @@
 <main class="container payment" fxLayout="row" fxLayoutGap="32px">
-  <mat-card class="profile" fxLayout="column" fxFlex="33">
-    <h3>Profile</h3>
-    <div class="profile__form-name" fxLayout="row" fxLayoutGap="16px">
-      <mat-form-field appearance="legacy">
-        <mat-label>First name</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <mat-form-field appearance="legacy">
-        <mat-label>Last name</mat-label>
-        <input matInput />
-      </mat-form-field>
-    </div>
+  <div fxFlex="33" class="profile" fxLayout="column">
+    <mat-card fxLayout="column">
+      <h3>Profile</h3>
+      <div class="profile__form-name" fxLayout="row">
+        <form
+          [formGroup]="checkoutForm"
+          (ngSubmit)="onSubmit()"
+          fxLayout="row wrap"
+          fxLayoutGap="16px"
+          *ngIf="profileStatus"
+        >
+          <mat-form-field appearance="legacy" fxFlex="calc(50% - 16px)">
+            <mat-label>First name</mat-label>
+            <input matInput formControlName="name" />
+          </mat-form-field>
+          <mat-form-field appearance="legacy" fxFlex="calc(50% - 16px)">
+            <mat-label>Last name</mat-label>
+            <input matInput formControlName="lastName" />
+          </mat-form-field>
 
-    <mat-form-field appearance="legacy">
-      <mat-label>Enter your email</mat-label>
-      <input matInput placeholder="example@example.com" required />
-    </mat-form-field>
+          <mat-form-field appearance="legacy" fxFlex="100%">
+            <mat-label>Enter your email</mat-label>
+            <input
+              matInput
+              placeholder="example@example.com"
+              formControlName="email"
+              required
+            />
+          </mat-form-field>
 
-    <mat-form-field appearance="legacy">
-      <mat-label>CPF</mat-label>
-      <input matInput required />
-    </mat-form-field>
+          <mat-form-field appearance="legacy" fxFlex="calc(50% - 16px)">
+            <mat-label>CPF</mat-label>
+            <input matInput formControlName="document" required />
+          </mat-form-field>
 
-    <mat-form-field appearance="legacy">
-      <mat-label>Telefone</mat-label>
-      <input matInput required />
-    </mat-form-field>
+          <mat-form-field appearance="legacy" fxFlex="calc(50% - 16px)">
+            <mat-label>Phone</mat-label>
+            <input matInput formControlName="phone" required />
+          </mat-form-field>
 
-    <button mat-raised-button color="primary">Continue</button>
-  </mat-card>
-  <mat-card class="shipping" fxLayout="column" fxFlex="33">
-    <h3>Shipping</h3>
-    <div class="shipping__form-name" fxLayout="row" fxLayoutGap="16px">
-      <mat-form-field appearance="legacy">
-        <mat-label>CEP</mat-label>
-        <input matInput />
-      </mat-form-field>
-    </div>
-  </mat-card>
-  <mat-card fxFlex="33"
-    >Resume
+          <button
+            mat-raised-button
+            color="primary"
+            fxFlex="100%"
+            [disabled]="this.checkoutForm.invalid"
+          >
+            Continue
+          </button>
 
-    <table
-      mat-table
-      [dataSource]="products"
-      class="mat-elevation-z8"
-      *ngIf="products.length > 0"
-    >
-      <ng-container matColumnDef="image">
-        <th mat-header-cell *matHeaderCellDef [style.display]="'none'">
-          Image
-        </th>
-        <td mat-cell *matCellDef="let product">
-          <img
-            [src]="product.image"
-            alt="{{ product.title }}"
-            width="150"
-            class="cart__image"
-          />
-        </td>
-      </ng-container>
+          {{ checkoutForm.value | json }}
+        </form>
+      </div>
+    </mat-card>
+  </div>
+  <div fxFlex="33" fxLayout="column" class="shipping" fxLayoutGap="32px">
+    <mat-card fxLayout="column">
+      <h3>Shipping</h3>
 
-      <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef [style.display]="'none'">Name</th>
-        <td mat-cell *matCellDef="let product">{{ product.title }}</td>
-      </ng-container>
+      <div *ngIf="this.checkoutForm.invalid">
+        <p>Aguardando o preenchimento dos dados</p>
+      </div>
+      <div
+        class="shipping__form-name"
+        fxLayout="row"
+        fxLayoutGap="16px"
+        *ngIf="shippingStatus && !this.checkoutForm.invalid"
+      >
+        <mat-form-field appearance="legacy">
+          <mat-label>CEP</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </div>
+    </mat-card>
+    <mat-card class="payment" fxLayout="column">
+      <h3>Payment</h3>
+      <div fxLayout="row" fxLayoutGap="16px"></div>
+    </mat-card>
+  </div>
 
-      <ng-container matColumnDef="price">
-        <th mat-header-cell *matHeaderCellDef [style.display]="'none'">
-          Price
-        </th>
-        <td mat-cell *matCellDef="let product">
-          {{ product.price | currency: 'EUR' }}
-        </td>
-      </ng-container>
+  <div fxFlex="33" fxLayout="column" class="shipping" fxLayoutGap="32px">
+    <mat-card fxLayout="column"
+      ><h3>Resume</h3>
 
-      <tr
-        mat-header-row
-        *matHeaderRowDef="displayedColumns"
-        [style.display]="'none'"
-      ></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
-  </mat-card>
+      <table
+        mat-table
+        [dataSource]="products"
+        class="mat-elevation-z8"
+        *ngIf="products.length > 0"
+      >
+        <ng-container matColumnDef="image">
+          <th mat-header-cell *matHeaderCellDef [style.display]="'none'">
+            Image
+          </th>
+          <td mat-cell *matCellDef="let product">
+            <img
+              [src]="product.image"
+              alt="{{ product.title }}"
+              width="75"
+              height="75"
+              class="cart__image"
+            />
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef [style.display]="'none'">
+            Name
+          </th>
+          <td mat-cell *matCellDef="let product">{{ product.title }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef [style.display]="'none'">
+            Price
+          </th>
+          <td mat-cell *matCellDef="let product">
+            {{ product.price | currency: 'EUR' }}
+          </td>
+        </ng-container>
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns"
+          [style.display]="'none'"
+        ></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </mat-card>
+  </div>
 </main>
