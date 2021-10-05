@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
+
 import { select, Store } from '@ngrx/store';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { CepService } from '../../services/cep.service';
@@ -21,6 +22,7 @@ export class PaymentComponent implements OnInit, OnDestroy, OnChanges {
   shippingStatus: boolean = false;
   paymentStatus: boolean = false;
   shippingFormStatus: boolean = false;
+  total: number = 0;
 
   checkoutForm = this.formBuilder.group({
     name: new FormControl(null, [Validators.required, Validators.minLength(3)]),
@@ -57,6 +59,48 @@ export class PaymentComponent implements OnInit, OnDestroy, OnChanges {
     ])
   });
 
+  paymentForm = this.formBuilder.group({
+    card: new FormControl(null, [Validators.required]),
+    cardFlag: new FormControl(null, [Validators.required]),
+    name: new FormControl(null, [Validators.required]),
+    month: new FormControl(null, [Validators.required]),
+    year: new FormControl(null, [Validators.required]),
+    cod: new FormControl(null, [Validators.required]),
+    cpf: new FormControl(null, [Validators.required])
+  });
+
+  months = [
+    { value: '01' },
+    { value: '02' },
+    { value: '03' },
+    { value: '04' },
+    { value: '05' },
+    { value: '06' },
+    { value: '07' },
+    { value: '08' },
+    { value: '09' },
+    { value: '10' },
+    { value: '11' },
+    { value: '12' }
+  ];
+
+  years = [
+    { value: '21' },
+    { value: '22' },
+    { value: '23' },
+    { value: '24' },
+    { value: '25' },
+    { value: '26' },
+    { value: '27' },
+    { value: '28' },
+    { value: '29' },
+    { value: '30' },
+    { value: '31' },
+    { value: '32' },
+    { value: '33' },
+    { value: '34' }
+  ];
+
   constructor(
     private store: Store<any>,
     private router: Router,
@@ -68,13 +112,12 @@ export class PaymentComponent implements OnInit, OnDestroy, OnChanges {
         this.router.navigate(['cart']);
         return;
       }
+      this.total = state.cart.reduce((acc, val) => acc + val.price, 0);
       this.products = state.cart;
     });
   }
 
-  ngOnChanges() {
-    console.log(this.shippingForm);
-  }
+  ngOnChanges() {}
   ngOnInit(): void {
     this.shippingForm
       .get('cep')
@@ -83,7 +126,6 @@ export class PaymentComponent implements OnInit, OnDestroy, OnChanges {
         switchMap((status) => {
           this.resetShippingForm();
           if (status === 'VALID') {
-            console.log(this.shippingForm);
             return this.cepService.cepConsult(
               this.shippingForm.get('cep').value
             );
@@ -146,6 +188,11 @@ export class PaymentComponent implements OnInit, OnDestroy, OnChanges {
 
   onEditProfile() {
     this.profileStatus = true;
+  }
+
+  onEditShipping() {
+    this.shippingStatus = true;
+    this.shippingFormStatus = true;
   }
 
   onPayment() {

@@ -2,18 +2,10 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
-import { Product } from '../core/models/product.model';
 
+import { Product } from '../core/models/product.model';
 import { ProductService } from '../services/product.service';
-import {
-  AddToCart,
-  AddToWishlist,
-  GetItems,
-  GetItemsWishlist,
-  LoadItems,
-  RemoveFromCart,
-  RemoveFromWishlist
-} from './actions';
+import { GetItems, LoadItems } from './actions';
 
 @Injectable()
 export class ShopEffects {

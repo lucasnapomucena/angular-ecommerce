@@ -9,8 +9,26 @@ table.mat-table {
     padding: 0.5rem;
   }
 }
-
 .profile {
+  .mat-card {
+    position: sticky;
+    top: 121px;
+  }
+}
+
+.payment {
+  h3.title {
+    display: flex;
+    align-items: center;
+
+    .mat-icon {
+      margin-right: 8px;
+    }
+  }
+}
+
+.profile,
+.shipping {
   position: relative;
 
   &__edit-btn {
@@ -23,6 +41,13 @@ table.mat-table {
 .minicart {
   &__content {
     position: sticky;
-    top: 95px;
+    top: 121px;
+
+    .cart__image {
+      height: calc(50px - 2px);
+      width: calc(50px - 2px);
+      border-radius: 50%;
+      border: 2px solid #f6f6f6;
+    }
   }
 }

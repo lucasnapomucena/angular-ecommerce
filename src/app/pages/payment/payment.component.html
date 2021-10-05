@@ -1,7 +1,7 @@
 <main class="container payment" fxLayout="row" fxLayoutGap="32px">
   <div fxFlex="33" class="profile" fxLayout="column">
     <mat-card fxLayout="column">
-      <h3>Profile</h3>
+      <h3 class="title"><mat-icon>account_circle</mat-icon> Profile</h3>
       <button
         class="primary-light profile__edit-btn"
         fxLayoutAlign="center center"
@@ -70,12 +70,37 @@
   </div>
   <div fxFlex="33" fxLayout="column" class="shipping" fxLayoutGap="32px">
     <mat-card fxLayout="column">
-      <h3>Shipping</h3>
+      <h3 class="title"><mat-icon>home</mat-icon> Shipping</h3>
 
-      <div *ngIf="!this.checkoutForm.valid">
+      <button
+        class="primary-light shipping__edit-btn"
+        fxLayoutAlign="center center"
+        *ngIf="paymentStatus && !shippingStatus"
+        (click)="onEditShipping()"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <div *ngIf="!checkoutForm.valid">
         <p>Aguardando o preenchimento dos dados</p>
       </div>
-      <div class="shipping__form-name" fxLayout="row wrap" fxLayoutGap="16px">
+
+      <div *ngIf="paymentStatus && !shippingStatus">
+        <p>
+          <strong>Cep: </strong> {{ shippingForm.controls.cep.value }}<br />
+          <strong>Street: </strong>{{ shippingForm.controls.street.value
+          }}<br />
+          <strong>Number: </strong> {{ shippingForm.controls.number.value
+          }}<br />
+          <strong>Complement: </strong>
+          {{ shippingForm.controls.complement.value }}<br />
+          <strong>District: </strong> {{ shippingForm.controls.district.value
+          }}<br />
+          <strong>City: </strong> {{ shippingForm.controls.city.value }}<br />
+          <strong>State: </strong> {{ shippingForm.controls.state.value }}<br />
+        </p>
+      </div>
+      <div class="shipping__form" fxLayout="row wrap" fxLayoutGap="16px">
         <form
           [formGroup]="shippingForm"
           fxLayout="column wrap"
@@ -120,7 +145,6 @@
               <mat-label>State</mat-label>
               <input matInput formControlName="state" readonly />
             </mat-form-field>
-
             <button
               mat-raised-button
               color="primary"
@@ -135,9 +159,120 @@
       </div>
     </mat-card>
     <mat-card class="payment" fxLayout="column">
-      <h3>Payment</h3>
+      <h3 class="title"><mat-icon>credit_card</mat-icon>Payment</h3>
       <div fxLayout="row" fxLayoutGap="16px">
-        <p>Página de pagamento</p>
+        <div *ngIf="!shippingForm.valid">
+          <p>Aguardando o preenchimento dos dados</p>
+        </div>
+
+        <form
+          [formGroup]="paymentForm"
+          fxLayout="row wrap"
+          fxLayoutGap="16px"
+          *ngIf="checkoutForm.valid && shippingForm.valid"
+        >
+          <mat-form-field appearance="legacy" fxFlex="calc(100% - 16px)">
+            <mat-label>Number card</mat-label>
+            <input matInput formControlName="card" />
+          </mat-form-field>
+
+          <mat-radio-group
+            aria-label="Select an option"
+            fxFlex="calc(100% - 16px)"
+            fxLayout="row wrap"
+            fxLayoutGap="16px"
+            class="radio-group"
+            formControlName="cardFlag"
+          >
+            <mat-radio-button
+              value="visa"
+              fxLayout="column"
+              class="radio-button"
+              color="primary"
+              ><img src="/assets/visa.svg" alt="Visa" width="30" height="30"
+            /></mat-radio-button>
+            <mat-radio-button
+              value="american-express"
+              fxLayout="column"
+              class="radio-button"
+              color="primary"
+              ><img src="/assets/amex.svg" alt="Amex" width="30" height="30"
+            /></mat-radio-button>
+            <mat-radio-button
+              value="hipercard"
+              fxLayout="column"
+              class="radio-button"
+              color="primary"
+              ><img
+                src="/assets/hipercard.svg"
+                alt="Hipercard"
+                width="30"
+                height="30"
+            /></mat-radio-button>
+            <mat-radio-button
+              value="dinners"
+              fxLayout="column"
+              class="radio-button"
+              color="primary"
+              ><img
+                src="/assets/diners.svg"
+                alt="Diners"
+                width="30"
+                height="30"
+            /></mat-radio-button>
+            <mat-radio-button
+              value="mastercard"
+              fxLayout="column"
+              class="radio-button"
+              color="primary"
+              ><img
+                src="/assets/mastercard.svg"
+                alt="Mastercard"
+                width="30"
+                height="30"
+            /></mat-radio-button>
+            <mat-radio-button
+              value="elo"
+              fxLayout="column"
+              class="radio-button"
+              color="primary"
+              ><img src="/assets/elo.svg" alt="Elo" width="30" height="30"
+            /></mat-radio-button>
+          </mat-radio-group>
+
+          <mat-form-field appearance="legacy" fxFlex="calc(100% - 16px)">
+            <mat-label>Nome impresso no cartão</mat-label>
+            <input matInput formControlName="name" />
+          </mat-form-field>
+
+          <mat-form-field appearance="legacy" fxFlex="calc(50% - 16px)">
+            <mat-label>Month</mat-label>
+            <mat-select formControlName="month">
+              <mat-option *ngFor="let month of months" [value]="month.value">
+                {{ month.value }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="legacy" fxFlex="calc(50% - 16px)">
+            <mat-label>Year</mat-label>
+            <mat-select formControlName="year">
+              <mat-option *ngFor="let year of years" [value]="year.value">
+                {{ year.value }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="legacy" fxFlex="calc(100% - 16px)">
+            <mat-label>Cód</mat-label>
+            <input matInput formControlName="cod" />
+          </mat-form-field>
+
+          <mat-form-field appearance="legacy" fxFlex="calc(100% - 16px)">
+            <mat-label>Cpf</mat-label>
+            <input matInput formControlName="cpf" />
+          </mat-form-field>
+        </form>
       </div>
     </mat-card>
   </div>
@@ -190,6 +325,19 @@
         ></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
+
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <strong>Total:</strong> {{ total | currency: 'EUR' }}
+      </div>
+
+      <button
+        mat-raised-button
+        color="primary"
+        fxFlex="100%"
+        [disabled]="!paymentForm.valid"
+      >
+        Finish
+      </button>
     </mat-card>
   </div>
 </main>
