@@ -1,12 +1,16 @@
 <div class="container category" fxLayout="row wrap" fxLayoutGap="16px">
   <h1 fxFlex="100">Category Products: {{ name }}</h1>
   <aside fxFlex="calc(15% - 16px)" *ngIf="items.length > 0">
-    <app-filter fxLayout="column" [products]="items"></app-filter>
+    <app-filter
+      fxLayout="column"
+      [products]="items"
+      (productsFilter)="productFilter($event)"
+    ></app-filter>
   </aside>
   <main fxFlex="calc(85% - 16px)">
     <section fxLayout="row" fxLayoutAlign="center center">
       <app-product-list
-        [products]="items"
+        [products]="products"
         fxLayout="column"
         fxFill
       ></app-product-list>

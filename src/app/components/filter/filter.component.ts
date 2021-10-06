@@ -8,6 +8,7 @@ import { Product } from './../../core/models/product.model';
 })
 export class FilterComponent implements OnInit {
   @Input() products: Product[] = [];
+  items = this.products;
   @Output() productsFilter = new EventEmitter<Product[]>();
 
   constructor() {}
@@ -25,9 +26,12 @@ export class FilterComponent implements OnInit {
   }
 
   onInputChange(event) {
+    console.log(this.items);
     const filterProduct = this.products.filter(
       (item) => item.price <= event.value
     );
-    this.productsFilter.emit(filterProduct);
+    if (filterProduct.length) {
+      this.productsFilter.emit(filterProduct);
+    }
   }
 }

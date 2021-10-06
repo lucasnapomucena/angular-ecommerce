@@ -16,4 +16,6 @@ export class FormComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  onSubmit() {}
 }
