@@ -26,7 +26,6 @@ export class FilterComponent implements OnInit {
   }
 
   onInputChange(event) {
-    console.log(this.items);
     const filterProduct = this.products.filter(
       (item) => item.price <= event.value
     );
